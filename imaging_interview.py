@@ -56,21 +56,18 @@ def main():
     target_size = (480, 270)
     dataset_path = "./dataset/"
 
-
+    # Grid Search for various parameter values
     contour_areas = [0, 100, 200, 500, 1000, 2000]
     kernel_sizes = [None, 3, 5, 7]
 
     for min_contour_area in contour_areas:
         for kernel_size in kernel_sizes:
 
-            output_path = "./unique_images_" + str(min_contour_area) + "_" + str(kernel_size) + "/"
+            output_path = "./processed_images_" + str(min_contour_area) + "_" + str(kernel_size) + "/"
             print(output_path)
 
             if not os.path.exists(output_path):
                 os.makedirs(output_path)
-                file_path = os.path.join(output_path, "log.txt")
-                with open(file_path, "w+") as file:
-                    file.write("Name      --> Score\n")
             
             file_list = os.listdir(dataset_path)
 
@@ -91,8 +88,6 @@ def main():
 
                         if score > 0:
                             cv2.imwrite(os.path.join(output_path, filename), img)
-                            with open(file_path, "a") as file:
-                                file.write(filename + " ---> " + str(score) + "\n")
 
                         prev_frame = next_frame
 

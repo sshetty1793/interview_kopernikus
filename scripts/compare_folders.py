@@ -21,7 +21,7 @@ def print_unique_files(folder1, folder2):
     	print(unique)
 
 # Example usage:
-folder1 = "./unique_images_200_3/"
-folder2 = "./unique_images_200_5/"
+folder1 = "./processed_images_200_3/"
+folder2 = "./processed_images_200_5/"
 
 print_unique_files(folder1, folder2)
